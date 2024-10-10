@@ -6,11 +6,13 @@ import RedeemIcon from "@mui/icons-material/Redeem";
 import FeedIcon from "@mui/icons-material/Feed";
 import { useContext } from "react";
 import { BlurContext } from "@/components/Header";
-import { useTheme } from "@mui/material/styles";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
 import BoxAddress from "../BoxAddress";
 import BoxSuport from "../BoxSuport";
 import { useSelector } from "react-redux";
+import { useTheme } from "@/context/themeContext";
+
 import axios from "axios";
 
 const listLinkHeaderTop = [
@@ -43,6 +45,8 @@ const listLinkHeaderTop = [
 function HeaderTop() {
   const context: unknown = useContext(BlurContext);
   const user = useSelector((state) => state.auth.user);
+  const { theme, toggleTheme } = useTheme();
+  console.log("them", theme);
   const navigator = useNavigate();
   return (
     <Box
@@ -88,8 +92,16 @@ function HeaderTop() {
             ))}
           </Box>
           <Box className="header-top-right">
-            <Box className="icon-theme" sx={{ color: "#fff" }}>
-              <LightModeIcon fontSize="small" />
+            <Box
+              className="icon-theme"
+              sx={{ color: "#fff" }}
+              onClick={toggleTheme}
+            >
+              {theme === "light" ? (
+                <LightModeIcon fontSize="small" />
+              ) : (
+                <NightlightRoundIcon fontSize="small" />
+              )}
             </Box>
             <Box className="acc">
               {!user && (

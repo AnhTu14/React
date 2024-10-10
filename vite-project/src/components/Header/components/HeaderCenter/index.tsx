@@ -7,6 +7,7 @@ import WifiCalling3Icon from "@mui/icons-material/WifiCalling3";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { ShoppingCart } from "@mui/icons-material";
 import _ from "lodash";
+import SearchProduct from "./SearchProduct.tsx";
 import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
@@ -88,7 +89,7 @@ export default function HeaderCenter() {
               </Link>
             </Grid>
             <Grid item xs={4.8}>
-              Seacch
+              <SearchProduct />
             </Grid>
             <Grid item xs={4.8}>
               <Box
@@ -102,14 +103,47 @@ export default function HeaderCenter() {
                   },
                 }}
               >
-                {/* <Link
+                <Link
                   to="#"
                   component={NavLink}
-                  className={`contact-cpt ${classes.contactCpt}`}
+                  className={`contact-cpt`}
+                  sx={(theme) => ({
+                    display: "flex",
+                    alignItems: "center",
+                    "& .MuiTypography-root": {
+                      color: `${theme.palette.common.white} !important`,
+                    },
+                  })}
                 >
                   <Box
-                    className={`icon-cpt ${classes.iconCpt}`}
-                    // sx={{ display: { xxl: "none" } }}
+                    className={`icon-cpt`}
+                    sx={(theme) => ({
+                      width: "40px",
+                      height: "40px",
+                      display: "flex",
+                      alignItems: "center",
+                      borderRadius: "50%",
+                      backgroundColor: theme.backgroundColor.search,
+                      color: `${theme.colorText.changeColorBrand} !important`,
+                      justifyContent: "center",
+                      marginRight: "10px",
+                      [theme.breakpoints.down("xxl")]: {
+                        width: "33px",
+                        height: "33px",
+                      },
+                      "& svg": {
+                        // color: theme.palette.primary.main,
+                      },
+                      "& .MuiBadge-root": {
+                        margin: "2px 7px 0 0",
+                      },
+                      "& .MuiBadge-badge": {
+                        top: "5px",
+                        right: "0px",
+                        border: `2px solid ${theme.palette.background.paper}`,
+                        backgroundColor: "#ff5b2b",
+                      },
+                    })}
                   >
                     <WifiCalling3Icon
                       sx={{ fontSize: { xs: "18px", xxl: "22px" } }}
@@ -131,9 +165,45 @@ export default function HeaderCenter() {
                 <Link
                   to="buildpc"
                   component={NavLink}
-                  className={`contact-cpt ${classes.contactCpt}`}
+                  className={`contact-cpt`}
+                  sx={(theme) => ({
+                    display: "flex",
+                    alignItems: "center",
+                    "& .MuiTypography-root": {
+                      color: `${theme.palette.common.white} !important`,
+                    },
+                  })}
                 >
-                  <Box className={`icon-cpt ${classes.iconCpt}`}>
+                  <Box
+                    className={`icon-cpt`}
+                    sx={(theme) => ({
+                      width: "40px",
+                      height: "40px",
+                      display: "flex",
+                      alignItems: "center",
+                      borderRadius: "50%",
+                      backgroundColor: theme.backgroundColor.search,
+                      color: `${theme.colorText.changeColorBrand} !important`,
+                      justifyContent: "center",
+                      marginRight: "10px",
+                      [theme.breakpoints.down("xxl")]: {
+                        width: "33px",
+                        height: "33px",
+                      },
+                      "& svg": {
+                        // color: theme.palette.primary.main,
+                      },
+                      "& .MuiBadge-root": {
+                        margin: "2px 7px 0 0",
+                      },
+                      "& .MuiBadge-badge": {
+                        top: "5px",
+                        right: "0px",
+                        border: `2px solid ${theme.palette.background.paper}`,
+                        backgroundColor: "#ff5b2b",
+                      },
+                    })}
+                  >
                     <SettingsIcon
                       sx={{ fontSize: { xs: "18px", xxl: "22px" } }}
                     />
@@ -154,18 +224,43 @@ export default function HeaderCenter() {
                 <Link
                   to="/gio-hang"
                   component={NavLink}
-                  className={classes.iconCpt}
-                  sx={{ marginRight: "0px !important" }}
+                  sx={(theme) => ({
+                    width: "40px",
+                    height: "40px",
+                    display: "flex",
+                    alignItems: "center",
+                    borderRadius: "50%",
+                    backgroundColor: theme.backgroundColor.search,
+                    color: `${theme.colorText.changeColorBrand} !important`,
+                    justifyContent: "center",
+                    marginRight: "0px",
+                    [theme.breakpoints.down("xxl")]: {
+                      width: "33px",
+                      height: "33px",
+                    },
+                    "& svg": {
+                      // color: theme.palette.primary.main,
+                    },
+                    "& .MuiBadge-root": {
+                      margin: "2px 7px 0 0",
+                    },
+                    "& .MuiBadge-badge": {
+                      top: "5px",
+                      right: "0px",
+                      border: `2px solid ${theme.palette.background.paper}`,
+                      backgroundColor: "#ff5b2b",
+                    },
+                  })}
                 >
                   <Badge
-                    badgeContent={infoCart.products.length}
+                    // badgeContent={infoCart.products.length}
                     color="secondary"
                   >
                     <ShoppingCart
                       sx={{ fontSize: { xs: "18px", xxl: "22px" } }}
                     />
                   </Badge>
-                </Link> */}
+                </Link>
               </Box>
             </Grid>
           </Grid>

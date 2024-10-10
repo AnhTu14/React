@@ -1,24 +1,25 @@
 import { useState, createContext, ReactNode, useContext } from "react";
 
-// Định nghĩa kiểu context
 interface ThemeContextType {
   theme: string;
   toggleTheme: () => void;
 }
 
-// Tạo context với kiểu đã định nghĩa
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-// Định nghĩa props cho ThemeProvider
 interface ThemeProviderProps {
   children: ReactNode;
 }
 
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
 function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<string>("light");
+  const [theme, setTheme] = useState<string>(() => {
+    return window.localStorage.getItem("theme") || "light";
+  });
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
+    const newTheme = theme === "light" ? "dark" : "light";
+    window.localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
   };
 
   // Gán kiểu rõ ràng cho value
@@ -38,4 +39,4 @@ function useTheme() {
   return context;
 }
 
-export { ThemeProvider, useTheme };
+export { ThemeProvider, useTheme, ThemeContext };
