@@ -1,0 +1,135 @@
+@import "../../../../mixin.scss";
+.wrap-pd-featured{
+    margin-top: 15px;
+    .wrap-ct{
+        // background: rgb(65,0,238);
+        // background: linear-gradient(90deg, rgba(65,0,238,1) 0%, rgba(185,0,252,1) 100%);
+        background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        border-radius: 15px;
+        .nav-tab{
+            display: flex;
+            flex-wrap: wrap;
+            background: #02b5d6;
+            padding: 20px;
+            position: relative;
+            .item-nav{
+                font-size: 20px;
+                text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                position: relative;
+                margin-right: 15px;
+                color: #fff;
+                @include mediaMaxWidth(1024px){
+                    font-size: 15px;
+                }
+                &.active{
+                    border-bottom: solid 2px #fff;
+                }
+
+            }
+            .more-feat{
+                position: absolute;
+                top: 50%;
+                right: 20px;
+                transform: translateY(-50%);
+                a{
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #fff;
+                }
+            }
+        }
+        .header-featured{
+            color: #c315c6;
+            font-style: italic;
+            font-weight: 900;
+            font-size: 34px;
+            text-transform: uppercase;
+            text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+            text-align: center;
+            padding: 21px 0;
+        }
+        .link-more-feature{
+            text-align: right;
+            color: #fff;
+            display: block;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            margin-right: 20px;
+            margin-top: 20px;
+        }
+        .products-feature{
+            display: flex;
+            flex-wrap: wrap;
+            padding: 40px 20px 40px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            .banner-feature{
+                width: calc((100% - 40px - 30px) / 5);
+                margin-right: 40px;
+                img{
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                }
+                @include mediaMaxWidth(1024px){
+                    display: none;
+                }
+            }
+            .slider-products{
+                width: calc((100% - 40px - 30px) / 5 * 4 + 30px);
+                position: relative;
+                @include mediaMaxWidth(1024px){
+                    width: 100%;
+                }
+                .swiper-button-next{
+                    background: rgba(0, 0, 0, 0.425);
+                    padding: 10px;
+                    right: 0;
+                    &::after{
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: #fff;
+                    }
+                }
+                .swiper-button-prev{
+                    background: rgba(0, 0, 0, 0.425);
+                    left: 0;
+                    &::after{
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: #fff;
+                    }
+                }
+                .swiper-slide{
+                    height: auto;
+                    .item-pd{
+                        height: 100%;
+                    }
+                }
+                .preload-feat{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 85px;
+                    height: 85px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 999;
+                    background: #0000005e;
+                }
+            }
+        }
+    }
+}

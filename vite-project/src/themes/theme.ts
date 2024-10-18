@@ -103,6 +103,7 @@ export const light = responsiveFontSizes(
         gradient: lightTheme.backgroundGradient,
         blackWhite: lightTheme.colorLight,
         footerBot: lightTheme.colorBrandingLight,
+        blackWhite2: lightTheme.backgroundColor2,
         changeBgBrand2: lightTheme.colorBrandingLight2,
         gradientMore: "linear-gradient(rgba(255, 255, 255, 0), white)",
         customPd: "none",

@@ -1,7 +1,8 @@
 import axios, { AxiosResponse } from "axios";
-
+import * as process from "process";
+console.log("API HOST:", import.meta.env.VITE_DEV_API_HOST);
 const axiosClients = axios.create({
-  baseURL: "http://js-post-api.herokuapp.com/api",
+  baseURL: import.meta.env.VITE_DEV_API_HOST,
   headers: {
     "Content-Type": "application/json",
   },

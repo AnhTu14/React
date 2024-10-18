@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "@components/Header";
+import Footer from "@components/Footer";
 import { Outlet } from "react-router-dom";
 const Layout = () => {
   return (
@@ -8,6 +9,7 @@ const Layout = () => {
       <main>
         <Outlet /> {/* Đây là nơi sẽ render các component của từng trang */}
       </main>
+      <Footer />
     </div>
   );
 };
