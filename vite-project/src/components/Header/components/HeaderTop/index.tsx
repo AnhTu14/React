@@ -10,8 +10,10 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
 import BoxAddress from "../BoxAddress";
 import BoxSuport from "../BoxSuport";
-import { useSelector } from "react-redux";
+import { IconsPage } from "@/const/images";
+import { useSelector, useDispatch } from "react-redux";
 import { useTheme } from "@/context/themeContext";
+import { logoutSuccess } from "@/page/Auth/authSlice";
 
 import axios from "axios";
 
@@ -44,10 +46,17 @@ const listLinkHeaderTop = [
 
 function HeaderTop() {
   const context: unknown = useContext(BlurContext);
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const { theme, toggleTheme } = useTheme();
-  console.log("them", theme);
-  const navigator = useNavigate();
+  console.log("themuser", user);
+  const navigate = useNavigate();
+
+  const hanldeLogOut = () => {
+    localStorage.removeItem("accessToken");
+    dispatch(logoutSuccess());
+    navigate("/dang-nhap");
+  };
   return (
     <Box
       sx={(theme) => ({
@@ -124,6 +133,43 @@ function HeaderTop() {
                     Đăng nhập
                   </Link>
                 </>
+              )}
+              {user && (
+                <Box className="box-user">
+                  <Box className="wrap-img">
+                    {!user.avatar && <img src={IconsPage.Avatar} />}
+                    {user.avatar && <img src={user.avatar} />}
+                  </Box>
+                  <Box className="option-user">
+                    <Box
+                      className={`wrap-op`}
+                      sx={(theme) => ({
+                        background: theme.backgroundColor.blackWhite2,
+                      })}
+                    >
+                      <Link
+                        className="link-op"
+                        to="/tai-khoan"
+                        component={NavLink}
+                      >
+                        <Typography>Tài khoản</Typography>
+                      </Link>
+                      <Link className="link-op" to="/order" component={NavLink}>
+                        <Typography>Đơn mua</Typography>
+                      </Link>
+                      <Link
+                        className="link-op"
+                        to="/san-pham-yeu-thich"
+                        component={NavLink}
+                      >
+                        <Typography>Yêu thích</Typography>
+                      </Link>
+                      <Box className="link-op" onClick={hanldeLogOut}>
+                        <Typography>Đăng xuất</Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
               )}
             </Box>
           </Box>

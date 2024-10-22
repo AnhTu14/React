@@ -4,7 +4,7 @@ import ProductFeatured from "@/page/Home/component/ProductFeature/index";
 import { useSelector } from "react-redux";
 import CategoryProduct from "@/page/Home/component/CategoryProduct";
 import ArticleFeatured from "@/page/Home/component/ArticleFeatured";
-import "./index.scss";
+import "./styles.scss";
 export default function HomePage() {
   const dataCategory = useSelector((state: unknown) => state.product);
   return (

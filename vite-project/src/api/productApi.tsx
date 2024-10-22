@@ -8,5 +8,9 @@ const product = {
     const url = "/products";
     return axiosClient.get(url, { params });
   },
+  getProductsFavorite(params) {
+    const url = "/product-like";
+    return axiosClient.get(url, { params });
+  },
 };
 export default product;

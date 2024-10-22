@@ -1,0 +1,91 @@
+@import "../../mixin.scss";
+.page-acc{
+    .loading{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 500px;
+    }
+    .wrap-ct{
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+        .left-acc{
+            width: calc((100% - 15px) / 5);
+            margin-right: 15px;
+            padding: 15px 10px;
+            border-radius: 5px;
+            height: 100%;
+            position: sticky;
+            top: 15px;
+            @include mediaMaxWidth(1024px){
+                width: 100%;
+                margin-right: 0;
+                position: static;
+                margin-bottom: 10px;
+            }
+            .name-acc{
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                margin-bottom: 15px;
+                .left-img{
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    position: relative;
+                    overflow: hidden;
+                    img{
+                        @include objectFitImg;
+                    }
+                }
+                .right-text{
+                    width: calc(100% - 45px);
+                    padding-left: 10px;
+                    .nameuser{
+                        font-weight: 500;
+                    }
+                }
+            }
+            .wrap-nav{
+                @include mediaMaxWidth(1024px){
+                    display: flex;
+                    overflow: scroll;
+                }
+                .link-nav{
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    padding: 5px;
+                    margin-bottom: 5px;
+                    border-radius: 5px;
+                    @include mediaMaxWidth(1024px){
+                        margin-right: 10px;
+                        flex-shrink: 0;
+                    }
+                    &.active{
+                        background: #155aa4;
+                        color: #fff;
+                    }
+                    .icon{
+                        width: 25px;
+                        display: flex;
+                        margin-right: 5px;
+                    }
+                    .text{
+                        width: calc(100% - 30px);
+                    }
+                }
+            }
+        }
+        .right-acc{
+            @include mediaMaxWidth(1024px){
+                width: 100%;
+            }
+            width: calc((100% - 15px) / 5 * 4);
+            // padding: 15px 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+    }
+}

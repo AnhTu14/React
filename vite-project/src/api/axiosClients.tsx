@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
-import * as process from "process";
-console.log("API HOST:", import.meta.env.VITE_DEV_API_HOST);
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 const axiosClients = axios.create({
   baseURL: import.meta.env.VITE_DEV_API_HOST,
   headers: {
@@ -10,7 +10,10 @@ const axiosClients = axios.create({
 // Add a request interceptor
 axiosClients.interceptors.request.use(
   function (config) {
-    // Do something before request is sent
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   function (error) {
@@ -22,13 +25,15 @@ axiosClients.interceptors.request.use(
 // Add a response interceptor
 axiosClients.interceptors.response.use(
   function (response: AxiosResponse) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
+    console.log("responseAxi", response);
     return response.data;
   },
   function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
+    console.log("axios", error);
+    if (error.response && error.response.status === 401) {
+      localStorage.removeItem("accessToken");
+      window.location.href = "/dang-nhap";
+    }
     return Promise.reject(error);
   }
 );
