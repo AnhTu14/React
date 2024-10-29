@@ -3,7 +3,6 @@ import CheckIcon from "@mui/icons-material/Check";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import { NavLink, useNavigate } from "react-router-dom";
-import { makeStyles } from "@mui/styles";
 
 import { formatCurrency } from "@/utils/formatNumBerPrice";
 import "./styles.scss";
@@ -13,6 +12,8 @@ import { memo } from "react";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { postCart } from "@/page/Cart/cartSlice";
+import { useSnackbar } from "notistack";
 
 function ItemProduct({
   itemData,
@@ -24,11 +25,15 @@ function ItemProduct({
   cssCategory,
 }) {
   const domain = "https://hanoinew.vn/";
-
+  const dispatch = useDispatch();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   useEffect(() => {}, []);
-
-  const handleAddIdCart = (id: string) => {
-    console.log("id cart", id);
+  const handleShowToast = (value, variant) => {
+    enqueueSnackbar(value, { variant });
+  };
+  const handleAddIdCart = (idProduct: string) => {
+    dispatch(postCart([{ id: idProduct, count: 1 }]));
+    handleShowToast("Đã thêm sản phẩm vào giỏ hàng", "success");
   };
   const handleDeleteProductLiked = (id: string) => {
     console.log("idP", id);

@@ -4,7 +4,7 @@ import LazyLoad from "../components/LoadLazy";
 import PrivateRoute from "../components/PrivateRoute";
 import Layout from "../layouts/Layout";
 const Home = React.lazy(() => import("@/page/Home/index"));
-const Card = React.lazy(() => import("@/page/card/index"));
+const Cart = React.lazy(() => import("@/page/Cart/index"));
 const Product = React.lazy(() => import("../page/product/index"));
 const Login = React.lazy(() => import("@/page/Auth/Login"));
 const Register = React.lazy(() => import("@/page/Auth/Register"));
@@ -66,11 +66,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/gio-hang",
-        element: (
-          <PrivateRoute>
-            <LazyLoad children={<Card />} />
-          </PrivateRoute>
-        ), // Trang Card được bảo vệ
+        element: <LazyLoad children={<Cart />} />,
       },
       {
         path: "*",

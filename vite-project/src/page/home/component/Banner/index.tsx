@@ -12,7 +12,7 @@ import SellIcon from "@mui/icons-material/Sell";
 import BannerPc from "./BannerPc";
 import { AxiosResponse } from "axios";
 import { getBanner } from "@/api/commonApi";
-import "../../index.scss";
+import "../../styles.scss";
 
 interface Banner {
   id: string;

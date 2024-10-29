@@ -7,6 +7,7 @@ import { useTheme } from "./context/themeContext.js";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setAUTH, logoutSuccess } from "@/page/Auth/authSlice.js";
+import { postCart } from "@/page/Cart/cartSlice";
 import "./index.scss";
 import authApi from "./api/auth.js";
 
@@ -33,6 +34,18 @@ function App() {
       fetchUserData();
     }
   }, [dispatch]);
+  useEffect(() => {
+    if (window.localStorage.getItem("listIdProduct")) {
+      const localIdProduct = JSON.parse(
+        window.localStorage.getItem("listIdProduct")
+      );
+      console.log("local", localIdProduct);
+      if (localIdProduct.length > 0) {
+        // dispatch(addListCart(localIdProduct));
+        dispatch(postCart(localIdProduct));
+      }
+    }
+  }, []);
   return (
     <ThemeProvider theme={themeMode}>
       <CssBaseline />
