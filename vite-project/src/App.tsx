@@ -11,8 +11,8 @@ import { postCart } from "@/page/Cart/cartSlice";
 import "./index.scss";
 import authApi from "./api/auth.js";
 // test ty nhe
-
 function App() {
+  // nhanh B
   const { theme } = useTheme();
   const themeMode = theme === "light" ? light : dark;
   const dispatch = useDispatch();
