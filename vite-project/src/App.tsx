@@ -10,6 +10,7 @@ import { setAUTH, logoutSuccess } from "@/page/Auth/authSlice.js";
 import { postCart } from "@/page/Cart/cartSlice";
 import "./index.scss";
 import authApi from "./api/auth.js";
+// test ty nhe
 
 function App() {
   const { theme } = useTheme();
