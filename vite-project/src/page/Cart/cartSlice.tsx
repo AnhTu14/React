@@ -117,7 +117,7 @@ const cart = createSlice({
       })
       .addCase(postCart.rejected, (state, action) => {
         state.error =
-          action.payload || "An error occurred while posting the card.";
+          action.payload || "An error occurred while posting the card.1";
       });
   },
 });
