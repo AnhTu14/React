@@ -12,7 +12,6 @@ import "./index.scss";
 import authApi from "./api/auth.js";
 // test ty nhe
 // tao nhanh a
-
 function App() {
   const { theme } = useTheme();
   const themeMode = theme === "light" ? light : dark;
