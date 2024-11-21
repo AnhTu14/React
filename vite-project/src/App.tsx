@@ -13,6 +13,7 @@ import authApi from "./api/auth.js";
 // test ty nhe
 // tao nhanh a
 function App() {
+  // nhanh B
   const { theme } = useTheme();
   const themeMode = theme === "light" ? light : dark;
   const dispatch = useDispatch();
